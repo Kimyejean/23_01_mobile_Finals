@@ -1,8 +1,8 @@
 <html>
 <head>
 <title>내가 그림이 될 상인가?</title>
-<body>
-<div>
+<body
+      <div>
   Teachable Machine Image Model
 </div>
 <input type="file" id="file-input" accept="image/*" />
@@ -25,9 +25,6 @@
     maxPredictions = model.getTotalClasses();
 
     labelContainer = document.getElementById("label-container");
-    for (let i = 0; i < maxPredictions; i++) {
-      labelContainer.appendChild(document.createElement("div"));
-    }
   }
 
   async function classify() {
@@ -42,14 +39,20 @@
       URL.revokeObjectURL(this.src);
       const prediction = await model.predict(img);
 
-      if (prediction[0].className === "monet" && prediction[0].probability.toFixed(2) == 1.00) {
-        labelContainer.childNodes[0].innerHTML = "monet";
-      } else if (prediction[1].className === "gogh" && prediction[1].probability.toFixed(2) == 1.00) {
-        labelContainer.childNodes[0].innerHTML = "gogh";
-      } else if (prediction[2].className === "michelangelo" && prediction[2].probability.toFixed(2) == 1.00) {
-        labelContainer.childNodes[0].innerHTML = "michelangelo";
+      let highestPrediction = -1;
+      let highestLabel = "";
+
+      for (let i = 0; i < maxPredictions; i++) {
+        if (prediction[i].probability > highestPrediction) {
+          highestPrediction = prediction[i].probability;
+          highestLabel = prediction[i].className;
+        }
+      }
+
+      if (highestPrediction.toFixed(2) == 0.40) {
+        labelContainer.innerHTML = highestLabel;
       } else {
-        labelContainer.childNodes[0].innerHTML = "알수없음";
+        labelContainer.innerHTML = "알수없음";
       }
     };
   }
@@ -57,6 +60,5 @@
   // Initialize the model
   init();
 </script>
-
 </body>
 </html>
