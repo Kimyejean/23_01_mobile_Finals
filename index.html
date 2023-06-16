@@ -1,7 +1,3 @@
-<html>
-<head>
-<title>내가 그림이 될 상인가?</title>
-<body>
 <div>Teachable Machine Image Model</div>
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>
@@ -54,28 +50,10 @@
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
-		
-		if(prediction[0].className== "monet" && prediction[0].probability.toFixed(2) == 1.00){
-			labelContainer.childNodes[0].innerHTML= "monet" 
-		} 
-		
-		else if (prediction[1].className== "gogh" && prediction[1].probability.toFixed(2) == 1.00) {
-			labelContainer.childNodes[0].innerHTML= "gogh" 
-		} 
-		
-		else if (prediction[2].className== "michelangelo" && prediction[1].probability.toFixed(2) == 1.00) {
-			labelContainer.childNodes[0].innerHTML= "michelangelo" 
-		} 
-		
-		else { 
-			labelContainer.childNodes[0].innerHTML= "알수없음"
-		}
-        //for (let i = 0; i < maxPredictions; i++) {
-        //    const classPrediction =
-        //        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        //    labelContainer.childNodes[i].innerHTML = classPrediction;
-        //}
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
     }
 </script>
-</body>
-</html>
