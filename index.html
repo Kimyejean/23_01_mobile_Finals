@@ -41,7 +41,9 @@
         document.getElementById("webcam-container").appendChild(webcam.canvas);
         labelContainer = document.getElementById("label-container");
         for (let i = 0; i < maxPredictions; i++) { // and class labels
-            labelContainer.appendChild(document.createElement("div"));
+            const labelElement = document.createElement("div");
+            labelElement.style.display = "none"; // Hide initially
+            labelContainer.appendChild(labelElement);
         }
     }
 
@@ -53,12 +55,29 @@
 
     // run the webcam image through the image model
     async function predict() {
-        // predict can take in an image, video or canvas html element
+        // predict can take in an image, video, or canvas HTML element
         const prediction = await model.predict(webcam.canvas);
+
+        let highestPrediction = -1;
+        let highestLabelIndex = -1;
+
         for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
+            const probability = prediction[i].probability;
+            if (probability > highestPrediction) {
+                highestPrediction = probability;
+                highestLabelIndex = i;
+            }
+        }
+
+        for (let i = 0; i < maxPredictions; i++) {
+            const labelElement = labelContainer.childNodes[i];
+
+            if (i === highestLabelIndex) {
+                labelElement.innerHTML = prediction[i].className;
+                labelElement.style.display = "block"; // Show the highest label
+            } else {
+                labelElement.style.display = "none"; // Hide other labels
+            }
         }
     }
 </script>
