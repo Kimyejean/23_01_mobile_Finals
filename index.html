@@ -1,3 +1,8 @@
+<html>
+<head>
+<title>수련</title>
+</head>
+<body>
 <div>Teachable Machine Image Model</div>
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>
@@ -221,25 +226,25 @@
 		else if (prediction[56].className== "Water Lilies, Green Reflection, 1914-1917" && prediction[56].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water Lilies, Green Reflection, 1914-1917" 
 		}
-		else if (prediction[58].className== "Water Lilies, Morning 1914" && prediction[58].probability.toFixed(2) == 1.00) { 
+		else if (prediction[57].className== "Water Lilies, Morning 1914" && prediction[57].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water Lilies, Morning 1914" 
 		}
-		else if (prediction[59].className== "Water Lilies, Reflections of a Willow Tree 1916-19" && prediction[59].probability.toFixed(2) == 1.00) { 
+		else if (prediction[58].className== "Water Lilies, Reflections of a Willow Tree 1916-19" && prediction[58].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water Lilies, Reflections of a Willow Tree 1916-19" 
 		}
-		else if (prediction[60].className== "Water Lilies, Setting Sun 1907" && prediction[60].probability.toFixed(2) == 1.00) { 
+		else if (prediction[59].className== "Water Lilies, Setting Sun 1907" && prediction[59].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water Lilies, Setting Sun 1907" 
 		}
-		else if (prediction[61].className== "Water Lily Pond 1900" && prediction[61].probability.toFixed(2) == 1.00) { 
+		else if (prediction[60].className== "Water Lily Pond 1900" && prediction[60].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water Lily Pond 1900" 
 		}
-		else if (prediction[62].className== "Water Lily Pond 1917-1926" && prediction[62].probability.toFixed(2) == 1.00) { 
+		else if (prediction[61].className== "Water Lily Pond 1917-1926" && prediction[61].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water Lily Pond 1917-1926" 
 		}
-		else if (prediction[63].className== "Water-Lilies 1905 (2)" && prediction[63].probability.toFixed(2) == 1.00) { 
+		else if (prediction[62].className== "Water-Lilies 1905 (2)" && prediction[62].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water-Lilies 1905" 
 		}
-		else if (prediction[64].className== "Water-Lilies 1905" && prediction[64].probability.toFixed(2) == 1.00) { 
+		else if (prediction[63].className== "Water-Lilies 1905" && prediction[63].probability.toFixed(2) == 1.00) { 
 			labelContainer.childNodes[0].innerHTML= "Water-Lilies 1905" 
 		}
 		else if (prediction[64].className== "Water-Lilies with Reflections of Green Grasses 191" && prediction[64].probability.toFixed(2) == 1.00) { 
@@ -249,10 +254,12 @@
 		else { 
 			labelContainer.childNodes[0].innerHTML= "알수없음" 
 		}
-        //for (let i = 0; i < maxPredictions; i++) {
-        //    const classPrediction =
-        //        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        //    labelContainer.childNodes[i].innerHTML = classPrediction;
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
         }
     }
 </script>
+</body>
+</html>
