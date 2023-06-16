@@ -1,13 +1,60 @@
 <html>
 <head>
-<title>그림 속의 나</title>    
+<title>그림 속의 나</title>
+<style>
+	body {
+      background-color: #c4c4c4;
+    }
+	h2 {
+        color: #9bc0d4;
+        text-align: center;
+    }
+	#start{
+		background-color: #49874e;
+		color: white;
+		font-size: 20px;
+	}
+	#btgogh{
+		background-color: #333780;
+		color: white;
+		font-size: 15px;
+	}
+	#btmonet{
+		background-color: #8aab78;
+		color: white;
+		font-size: 15px;	
+	}
+	#btmichelangelo{
+		background-color: #d9c96f;
+		color: white;
+		font-size: 15px;	
+	}
+	.container {
+      width: 80%;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border: 5px dotted #4f4f4f;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+	 .button-container {
+	  justify-content: center;
+      display: flex;
+      gap: 10px;
+    }
+</style>    
 </head>
 <body>
-<div>Teachable Machine Image Model</div>
-<button type="button" onclick="init()">Start</button>
-<a href="gogh.html"><button type="button">고흐가 나왔다면?</button>
-<a href="monet.html"><button type="button">모네가 나왔다면?</button>
-<a href="michelangelo.html"><button type="button">미켈란젤로가 나왔다면?</button>
+<div class="container">
+<h2>나는 어떤 화가의 그림 속에 있을까?<h2>
+<button type="button" onclick="init()" id="start">Start</button><br><br>
+<h2>다른 화가에 대해 더 알고 싶다면?<h2>
+<div class="button-container">
+<a href="gogh.html"><button type="button" id="btgogh">고흐</button>
+<a href="monet.html"><button type="button" id="btmonet">모네</button>
+<a href="michelangelo.html"><button type="button" id="btmichelangelo">미켈란젤로</button>
+</div>
 <div id="webcam-container"></div>
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
@@ -84,5 +131,6 @@
         }
     }
 </script>
+</div>
 </body>
 </html>
