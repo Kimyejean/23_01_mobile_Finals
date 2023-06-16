@@ -48,7 +48,7 @@
         }
       }
 
-      if (highestPrediction.toFixed(2) == 0.40) {
+      if (highestPrediction.toFixed(2) >= 0.30) {
         labelContainer.innerHTML = highestLabel;
       } else {
         labelContainer.innerHTML = "알수없음";
